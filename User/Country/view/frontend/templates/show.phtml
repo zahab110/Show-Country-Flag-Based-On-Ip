@@ -1,0 +1,28 @@
+<link rel="stylesheet" type="text/css" href="<?= $block->getViewFileUrl('User_Country::css/flags.css') ?>" />
+
+<style>
+    .bg-dark {
+        height: 30px;
+        color: white;
+    }
+
+    .navbar-country-info {
+        display: flex;
+        align-items: center;
+    }
+
+    .navbar-country-info p {
+        margin-right: 100px; 
+    }
+</style>
+<nav class="navbar navbar-expand-lg bg-dark">
+    <div class="navbar-country-info">
+        <?php $infoToShow = $block->getData('infoToShow'); ?>
+        <p class="mb-0">User's Country: <?= $infoToShow['country'] ?? '' ?></p>
+        <p class="mb-0">Country Code: <?= $infoToShow['countryCode'] ?? '' ?></p>
+
+        <?php if (isset($infoToShow['countryCode']) && $infoToShow['countryCode'] !== null) : ?>
+            <div class="flag flag-<?= strtolower($infoToShow['countryCode']) ?>"></div>
+        <?php endif; ?>
+    </div>
+</nav>
